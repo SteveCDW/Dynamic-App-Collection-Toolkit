@@ -15,8 +15,8 @@ while getopts "c:r:s:lhv" opt ; do
 		"s") SIZE_VAL=$OPTARG ;;
 		"h") echo "Usage: $0 [-l]" ; echo ; 
 		     echo "If -l is set, any time the script needs to correct the database, it logs a timestamp to /home/em7admin/apply_tweak.log"
-			 echo "Once you have set your parameters below, add the following line via 'crontab -e':"
-			 echo "* * * * * /home/em7admin/keep_tweak.bash [-l]" ; exit 0 ;;
+		     echo "Once you have set your parameters below, add the following line via 'crontab -e':"
+		     echo "* * * * * /home/em7admin/keep_tweak.bash [-l]" ; exit 0 ;;
 		"l") LOGGING=1 ;;
 		"v") echo "$0, version $VER" ; exit 0 ;;
 		*) echo "Invalid option" ; exit 1 ;;

@@ -12,17 +12,17 @@ declare -a TWEAKS VALUE
 while getopts "hc:r:s:Vv" opt ; do
         case $opt in
                 "h") echo "Usage: $0 [-h] [-c #] [-r #] [-s #] [-V] [-v]" ; echo "where:" 
-				     echo "  -h = help message (what you're reading now)" 
-				     echo "  -c = number of chunk workers (default 2, current value: $(/opt/em7/bin/silo_mysql -NBe "SELECT dynamic_collect_num_chunk_workers FROM master.system_settings_core"))" 
-					 echo "  -r = the number of request workers per chunk worker (default 2 or 2xCPU, whichever is higher, recommend starting at $REC_VAL, current value: $(/opt/em7/bin/silo_mysql -NBe "SELECT dynamic_collect_num_request_workers FROM master.system_settings_core"))"
-					 echo "  -s = number of requests per request worker (default 200, current value: $(/opt/em7/bin/silo_mysql -NBe "SELECT dynamic_collect_request_chunk_size FROM master.system_settings_core"))"
-					 echo "  -V = verbose (prints output to screen)" 
-					 echo "  -v = show version" ; echo ; exit 0 ;;
+		     echo "  -h = help message (what you're reading now)" 
+		     echo "  -c = number of chunk workers (default 2, current value: $(/opt/em7/bin/silo_mysql -NBe "SELECT dynamic_collect_num_chunk_workers FROM master.system_settings_core"))" 
+		     echo "  -r = the number of request workers per chunk worker (default 2 or 2xCPU, whichever is higher, recommend starting at $REC_VAL, current value: $(/opt/em7/bin/silo_mysql -NBe "SELECT dynamic_collect_num_request_workers FROM master.system_settings_core"))"
+		     echo "  -s = number of requests per request worker (default 200, current value: $(/opt/em7/bin/silo_mysql -NBe "SELECT dynamic_collect_request_chunk_size FROM master.system_settings_core"))"
+		     echo "  -V = verbose (prints output to screen)" 
+		     echo "  -v = show version" ; echo ; exit 0 ;;
                 "c") TWEAKS+=("dynamic_collect_num_chunk_workers") ; VALUE+=($OPTARG) ;;
                 "r") TWEAKS+=("dynamic_collect_num_request_workers") ; VALUE+=($OPTARG) ;;
                 "s") TWEAKS+=("dynamic_collect_request_chunk_size") ; VALUE+=($OPTARG) ;;
-				"V") VERBOSE=1 ;;
-				"v") echo "$0, version $VER" ; exit 0 ;;
+		"V") VERBOSE=1 ;;
+		"v") echo "$0, version $VER" ; exit 0 ;;
                 *) echo "Invalid option" ; exit 1 ;;
         esac
 done
